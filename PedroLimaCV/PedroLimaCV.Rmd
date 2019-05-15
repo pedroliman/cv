@@ -1,8 +1,8 @@
 ---
 name: Pedro N. de Lima
-position: "Ph.D. Candidate"
-address: "School of Physics & Chemistry, École Normale Supérieure"
-phone: +1 22 3333 4444
+position: "Ph.D. Candidate, Pardee RAND Graduate School"
+address: "1776 Main Street, Santa Monica, CA 90401-3208"
+phone: +55 51 99214-0761
 www: www.pedronl.com
 #email: "pedronl@rand.org"
 #twitter: pedroliman
@@ -20,19 +20,26 @@ data_path = "C:/dev/cv/data.xlsx"
 
 # Professional Summary
 
-I am a Policy Research Assistant at RAND Corporation and a Ph.D. Candidate at Pardee RAND Graduate School (PRGS). As an Engineer by training, I enjoy working at the intersection between Wicked Problems, Programming and Operations Research. For this reason, I branched out of Industrial Engineering and joined the RAND Corporation and PRGS aiming to further specialize in Policy Areas demanding advanced decision analytic approaches. 
+I am a Policy Research Assistant at RAND Corporation and a Ph.D. Candidate at Pardee RAND Graduate School (PRGS). My academic interests often gravitate towards the intersection between OR, Programming, and Management of Wicked Problems. My undergraduate and master’s dissertations focused on wicked problems and decision under deep uncertainty, have received the Best Brazilian Dissertation in Production Engineering Prize from ABEPRO, in 2016 and 2018, respectively.
+
+# Work Experience
+
+```{r}
+#readxl::read_xlsx(data_path, "work-experience") %>%
+#  detailed_entries(what = Title, when = Year, with = Company, why = Description)
+```
 
 
 # Awards
 
 ```{r}
-readxl::read_xlsx(data_path, "awards") %>%
-  detailed_entries(what = Title, when = Year, with = Source, why = Description)
+#readxl::read_xlsx(data_path, "awards") %>%
+#  detailed_entries(what = Title, when = Year, with = Source, why = Description)
 ```
 
 
 # Publications
 
 ```{r publications}
-bibliography_entries("C:/dev/cv/publications.bib", "Publications")
+#bibliography_entries("C:/dev/cv/publications.bib", "Publications")
 ```

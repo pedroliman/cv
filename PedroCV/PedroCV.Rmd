@@ -1,0 +1,65 @@
+---
+name: Marie
+surname: Curie
+position: "Ph.D. Candidate, Pardee RAND Graduate School"
+address: "Asdas   "
+phone: +1 22 3333 4444
+www: pedronl.com
+email: "Marie.Curie@ens.fr"
+twitter: mariecurie
+github: mariecurie
+linkedin: mariecurie
+date: "`r format(Sys.time(), '%B %Y')`"
+output: 
+  vitae::moderncv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+data_path = "C:/dev/cv/data.xlsx"
+```
+
+# Summary
+ I am a Policy Research Assistant at RAND Corporation and a Ph.D. Candidate at Pardee RAND Graduate School (PRGS), specializing in the field of Decision Making Under Deep Uncertainty. My academic interests often gravitate towards the intersection between OR, Programming, and Management of Wicked Problems.
+ 
+# Education
+
+```{r}
+readxl::read_xlsx(data_path, "education") %>%
+  brief_entries(what = Title, when = Year, with = School)
+```
+
+# Work & Research Experience
+
+```{r}
+readxl::read_xlsx(data_path, "work-experience") %>%
+  detailed_entries(what = Title, when = Year, with = Company, why = Description)
+```
+
+# Awards
+```{r}
+readxl::read_xlsx(data_path, "awards") %>%
+  detailed_entries(what = Title, when = Year, with = Source, why = Description)
+```
+
+# Publications
+
+
+```{r}
+bibliography_entries("C:/dev/cv/PedroCV/forthcoming.bib")
+```
+
+```{r}
+bibliography_entries(file = "C:/dev/cv/PedroCV/journals.bib")
+```
+
+
+```{r}
+bibliography_entries("C:/dev/cv/PedroCV/books-chapters.bib")
+```
+
+```{r}
+bibliography_entries("C:/dev/cv/PedroCV/conferences.bib")
+```
+

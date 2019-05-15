@@ -1,0 +1,212 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2015 Xavier Danaux (xdanaux@gmail.com).
+%
+% Adapted to be an Rmarkdown template by Mitchell O'Hara-Wild
+% 8 February 2019
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,]{moderncv}
+
+% moderncv themes
+\moderncvstyle{casual}                             % style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
+
+\definecolor{color0}{rgb}{0,0,0}% black
+\definecolor{color1}{HTML}{3873B3}% custom
+\definecolor{color2}{rgb}{0.45,0.45,0.45}% dark grey
+
+\usepackage[scaled=0.86]{DejaVuSansMono}
+
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\def\donothing#1{#1}
+\def\emaillink#1{#1}
+
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+%\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.75,footskip=52pt]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvheadnamewidth}{10cm}            % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+
+%%%% BIBLIOGRAPHY
+% Bibliography formatting
+
+\usepackage[sorting=ynt,citestyle=authoryear,bibstyle=authoryear-comp,defernumbers=true,maxnames=20,giveninits=true, bibencoding=utf8, terseinits=true, uniquename=init,dashed=false,doi=false,isbn=false,natbib=true,backend=biber]{biblatex}
+
+\DeclareFieldFormat{url}{\url{#1}}
+\DeclareFieldFormat[article]{pages}{#1}
+\DeclareFieldFormat[inproceedings]{pages}{\lowercase{pp.}#1}
+\DeclareFieldFormat[incollection]{pages}{\lowercase{pp.}#1}
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+\DeclareFieldFormat[article]{title}{\MakeCapital{#1}}
+\DeclareFieldFormat[article]{url}{}
+\DeclareFieldFormat[inproceedings]{title}{#1}
+\DeclareFieldFormat{shorthandwidth}{#1}
+\DeclareFieldFormat{extradate}{}
+
+% No dot before number of articles
+\usepackage{xpatch}
+\xpatchbibmacro{volume+number+eid}{\setunit*{\adddot}}{}{}{}
+
+% Remove In: for an article.
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{%
+  \printtext{\bibstring{in}\intitlepunct}}}
+
+%\makeatletter
+%\DeclareDelimFormat[cbx@textcite]{nameyeardelim}{\addspace}
+%\makeatother
+
+\setlength{\bibitemsep}{1.8pt}
+\setlength{\bibhang}{.9cm}
+%\renewcommand{\bibfont}{\fontsize{12}{14}}
+
+\renewcommand*{\bibitem}{\addtocounter{papers}{1}\item \mbox{}\hskip-0.9cm\hbox to 0.9cm{\hfill\arabic{papers}.~\,}}
+\defbibenvironment{bibliography}
+{\list{}
+  {\setlength{\leftmargin}{\bibhang}%
+   \setlength{\itemsep}{\bibitemsep}%
+   \setlength{\parsep}{\bibparsep}}}
+{\endlist}
+{\bibitem}
+
+\renewcommand{\bibfont}{\normalfont\fontsize{10}{12.4}\selectfont}
+% Counters for keeping track of papers
+\newcounter{papers}
+
+\DeclareSortingScheme{ty}{
+  \sort{
+    \field{title}
+  }
+  \sort{
+    \field{year}
+  }
+}
+\DeclareBibliographyCategory{bib-C:/dev/cv/PedroCV/forthcoming.bib-3026130}
+\DeclareBibliographyCategory{bib-C:/dev/cv/PedroCV/journals.bib-3034712}
+\DeclareBibliographyCategory{bib-C:/dev/cv/PedroCV/books-chapters.bib-3038702}
+\DeclareBibliographyCategory{bib-C:/dev/cv/PedroCV/conferences.bib-3044486}
+\bibliography{C:/dev/cv/PedroCV/forthcoming.bib, C:/dev/cv/PedroCV/journals.bib, C:/dev/cv/PedroCV/books-chapters.bib, C:/dev/cv/PedroCV/conferences.bib}
+
+% personal data
+\name{Marie}{Curie}
+\title{Ph.D.~Candidate, Pardee RAND Graduate School}
+\address{Asdas}{}{}
+\phone[mobile]{+1 22 3333 4444} % Phone number
+\email{\donothing{\href{mailto:Marie.Curie@ens.fr}{\nolinkurl{Marie.Curie@ens.fr}}}}
+\homepage{pedronl.com} % Personal website
+\social[linkedin]{mariecurie}
+\social[twitter]{mariecurie}
+\social[github]{mariecurie}
+% \extrainfo{additional information}                 % optional, remove / comment the line if not wanted
+
+
+
+
+% Templates for detailed entries
+% Arguments: what when with where why
+\usepackage{etoolbox}
+\def\detaileditem#1#2#3#4#5{
+	\cventry{#2}{#1}{#3}{#4}{}{{\ifx#5\empty\else{\begin{itemize}#5\end{itemize}}\fi}}}
+\def\detailedsection#1{\nopagebreak#1}
+
+% Templates for brief entries
+% Arguments: what when with
+\def\briefitem#1#2#3{\cvitem{#2}{#1. #3}}
+\def\briefsection#1{\nopagebreak#1}
+
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+
+
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+I am a Policy Research Assistant at RAND Corporation and a Ph.D.~Candidate at Pardee RAND Graduate School (PRGS), specializing in the field of Decision Making Under Deep Uncertainty. My academic interests often gravitate towards the intersection between OR, Programming, and Management of Wicked Problems.
+
+\hypertarget{education}{%
+\section{Education}\label{education}}
+
+\briefsection{\briefitem{Ph.D. in Policy Analysis}{2019 - 202X}{Pardee RAND Graduate School, CA, U.S.}\briefitem{M.Sc. in Production Engineering}{2016 - 2018}{UNISINOS University, Brazil}\briefitem{B.Sc. in Production Engineering}{2009 - 2015}{UNISINOS University, Brazil}}
+
+\hypertarget{work-research-experience}{%
+\section{Work \& Research Experience}\label{work-research-experience}}
+
+\detailedsection{\detaileditem{Policy Research Assistant}{2019 - current}{RAND Corporation, US}{}{\item{Provides assistantship to research projects undertaken at RAND Corporation.}}\detaileditem{Lecturer}{2018 - 2019}{UNISINOS University, Brazil}{}{\item{Served as a Lecturer for Undergraduate and MBE courses in the Industrial Engineering Department. Disciplines: Operations Research - Linear Programming; Simulation Modeling (Discrete Event Simulation);  System Dynamics Simulation. Operations Management; Information Systems Management.}}\detaileditem{Master Research Assistant}{2016 - 2018}{UNISINOS University, Brazil}{}{\item{Developed a Monte Carlo Simulation package in R for cost-benefit analysis of Organizational Safety and Health Initiatives. In the scope of the master's research project, developed a range of algorithms for exploratory modeling and analysis of system dynamics models in R, using the Robust Decision Making approach.}}\detaileditem{Undergraduate Research Intern}{2013 - 2015}{UNISINOS University, Brazil}{}{\item{Provided assistantship for research projects delivered to private companies and public agencies. Developed an interface for system dynamics simulation integrating Ithink software and Excel, using VBA.}}\detaileditem{Chief Analyst}{2012 - 2013}{Rede Industrial, Brazil}{}{\item{Oversaw SIGMA's (a computerized maintenance management software) development and support teams.}}\detaileditem{Business Analyst}{2009 - 2012}{Rede Industrial, Brazil}{}{\item{Carried out requirement and use-case analysis for software improvements; Developed a working knowledge of Structured Query Language (SQL) for database reporting.}}\detaileditem{Support Assistant}{2008 - 2009}{Rede Industrial, Brazil}{}{\item{Assisted Sigma’s customers’ issues troubleshooting and Sigma’s Quality Assurance processes.}}}
+
+\hypertarget{awards}{%
+\section{Awards}\label{awards}}
+
+\detailedsection{\detaileditem{Best Brazilian Production Engineering Masters Dissertation}{2018}{ABEPRO - Brazilian Association for Industrial Engineering}{}{\item{Dissertation Title: Strategic Decision Making Under Deep Uncertainty in the 3D Printing Industry: A Robust Decision
+Making (RDM) Analysis. [Avaliação de Decisões Estratégicas sob Incerteza Profunda na Indústria da Manufatura Aditiva:
+Uma Análise a partir do Método Robust Decision Making (RDM).]}}\detaileditem{Best Brazilian Production Engineering Undergraduate Dissertation}{2016}{ABEPRO - Brazilian Association for Industrial Engineering}{}{\item{Dissertation Title: Problem Structuring Methods: A Review of methods to approach complex situations. [Problem
+Structuring Methods: Uma Revisão de Métodos para a Abordagem de Situações Complexas.].}}\detaileditem{CAPES PROSUP Scholarship}{2016}{Education Ministry, Brazilian Federal Government}{}{\item{Merit-based scolarship for master-level studies.}}\detaileditem{InovApps Prize}{2015}{Communications Ministry, Brazilian Federal Government}{}{\item{For proposing and deploying the Avalia Brasil App (an Android app aiming to measure Brazilian public service quality
+with the SERVPERF scale).}}\detaileditem{PROUNI Scholarship}{2013}{Education Ministry, Brazilian Federal Government}{}{\item{Merit- and need-based scolarship for undergraduate studies.}}}
+
+\hypertarget{publications}{%
+\section{Publications}\label{publications}}
+
+\defbibheading{bib-C:/dev/cv/PedroCV/forthcoming.bib-3026130}{}
+\addtocategory{bib-C:/dev/cv/PedroCV/forthcoming.bib-3026130}{Lima2019}
+\newrefcontext[sorting=none]\setcounter{papers}{0}\pagebreak[3]
+\printbibliography[category=bib-C:/dev/cv/PedroCV/forthcoming.bib-3026130,heading=none]\setcounter{papers}{0}
+
+\nocite{Lima2019}
+
+\defbibheading{bib-C:/dev/cv/PedroCV/journals.bib-3034712}{}
+\addtocategory{bib-C:/dev/cv/PedroCV/journals.bib-3034712}{Tegner2016,
+Dresch2018}
+\newrefcontext[sorting=none]\setcounter{papers}{0}\pagebreak[3]
+\printbibliography[category=bib-C:/dev/cv/PedroCV/journals.bib-3034712,heading=none]\setcounter{papers}{0}
+
+\nocite{Tegner2016,
+Dresch2018}
+
+\defbibheading{bib-C:/dev/cv/PedroCV/books-chapters.bib-3038702}{}
+\addtocategory{bib-C:/dev/cv/PedroCV/books-chapters.bib-3038702}{Rodrigues2014,
+Veit2019}
+\newrefcontext[sorting=none]\setcounter{papers}{0}\pagebreak[3]
+\printbibliography[category=bib-C:/dev/cv/PedroCV/books-chapters.bib-3038702,heading=none]\setcounter{papers}{0}
+
+\nocite{Rodrigues2014,
+Veit2019}
+
+\defbibheading{bib-C:/dev/cv/PedroCV/conferences.bib-3044486}{}
+\addtocategory{bib-C:/dev/cv/PedroCV/conferences.bib-3044486}{Machado2015,
+Lima2015,
+Lima2015b,
+Lima2015a,
+Lima2015c}
+\newrefcontext[sorting=none]\setcounter{papers}{0}\pagebreak[3]
+\printbibliography[category=bib-C:/dev/cv/PedroCV/conferences.bib-3044486,heading=none]\setcounter{papers}{0}
+
+\nocite{Machado2015,
+Lima2015,
+Lima2015b,
+Lima2015a,
+Lima2015c}
+
+
+\end{document}
+
+%\clearpage\end{CJK*}                              % if you are typesetting your resume in Chinese using CJK; the \clearpage is required for fancyhdr to work correctly with CJK, though it kills the page numbering by making \lastpage undefined
+\end{document}
+
+
+%% end of file `template.tex'.
