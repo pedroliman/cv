@@ -1,0 +1,38 @@
+---
+name: Pedro N. de Lima
+position: "Ph.D. Candidate"
+address: "School of Physics & Chemistry, École Normale Supérieure"
+phone: +1 22 3333 4444
+www: www.pedronl.com
+#email: "pedronl@rand.org"
+#twitter: pedroliman
+#github: pedroliman
+#linkedin: pedro-nascimento-de-lima
+date: "`r format(Sys.time(), '%B %Y')`"
+output: vitae::moderncv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+data_path = "C:/dev/cv/data.xlsx"
+```
+
+# Professional Summary
+
+I am a Policy Research Assistant at RAND Corporation and a Ph.D. Candidate at Pardee RAND Graduate School (PRGS). As an Engineer by training, I enjoy working at the intersection between Wicked Problems, Programming and Operations Research. For this reason, I branched out of Industrial Engineering and joined the RAND Corporation and PRGS aiming to further specialize in Policy Areas demanding advanced decision analytic approaches. 
+
+
+# Awards
+
+```{r}
+readxl::read_xlsx(data_path, "awards") %>%
+  detailed_entries(what = Title, when = Year, with = Source, why = Description)
+```
+
+
+# Publications
+
+```{r publications}
+bibliography_entries("C:/dev/cv/publications.bib", "Publications")
+```

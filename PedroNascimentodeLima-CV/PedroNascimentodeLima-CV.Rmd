@@ -1,0 +1,67 @@
+---
+name: Pedro Nascimento de Lima
+date: "`r format(Sys.time(), '%B, %Y')`"
+qualifications: BCom(Hons), BSc
+position: Policy Research Assistant - RAND Corporation; Ph.D. Candidate - Pardee RAND Graduate School
+address: 58 Madeleine Rd, Clayton
+phone: +61 408 259 421
+email: pedrolima.n@gmail.com
+website: pedronl.com
+github: pedroliman
+linkedin: pedro-nascimento-de-lima
+#twitter: mitchoharawild
+headcolor: 414141
+output: vitae::moderncv
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(vitae)
+knitr::opts_chunk$set(echo = FALSE)
+data_path = "C:/dev/cv/data.xlsx"
+```
+
+# Education
+
+
+# Experience
+```{r}
+tribble(
+  ~ role, ~ company, ~ loc, ~ dates, ~ details,
+  "Teaching Associate", "Monash University", "Caulfield & Clayton, Australia", "S1 2016 - Present", "Advanced statistical modelling (ETC3580)",
+  "Teaching Associate", "Monash University", "Caulfield & Clayton, Australia", "S1 2016 - Present", "Business forecasting (ETF3231/ETF5231)",
+  "Teaching Associate", "Monash University", "Caulfield & Clayton, Australia", "S1 2016 - Present", "Mathematics for business (ETF2700)",
+  "Teaching Associate", "Monash University", "Caulfield & Clayton, Australia", "S1 2016 - Present", "Data modelling and computing (ETC1010)",
+  "Research Assistant", "Monash University", "Clayton, Australia", "Jan. 2016 - Present", "Supervisors include Rob Hyndman, Dianne Cook, and George Athanasopoulos.",
+  "Research Assistant", "Monash University", "Clayton, Australia", "Jan. 2016 - Present", "Consulting projects with DiabetesLab, Tennis Australia, Monash University and Huawei.",
+  "Research Assistant", "Monash University", "Clayton, Australia", "Jan. 2016 - Present", "Contributed to the development of numerous open source R packages.",
+  "Volunteer", "Rotaract", "Monash, Australia", "Feb. 2013 - Nov. 2016", "Development and maintenance of club website and online services.",
+  "Volunteer", "Rotaract", "Monash, Australia", "Feb. 2013 - Nov. 2016", "Organising and hosting fundraisers.",
+  "Student Ambassador", "Google", "Sydney, Australia", "Feb. 2015 - Nov. 2015", "Supported Google's presence on campus with events and media.",
+  "Data Mining (Internship)", "iSelect", "Cheltenham, Australia", "Feb. 2015 - Mar. 2015", "Improved business data and issue reporting with interactive visualisations, and model-based anomaly detection.",
+  "Fresh Produce", "Coles", "Rowville, Australia", "Oct. 2010 - Nov. 2015", "Food preparation & display, first aid, staff training and customer assistance."
+) %>% 
+  detailed_entries(role, dates, company, loc, details)
+```
+
+<!--\newpage-->
+
+<!-- # Relevant Skills -->
+<!-- ```{r} -->
+<!-- cvskill("Data Analysis", c("Visualisation", "Data Cleaning", "Forecasting", "Modelling", "Communication", "Inference", "Machine Learning", "Web Scraping")) -->
+<!-- cvskill("Programming", c("R", "Python", "SQL", "Java", "C", "C++", "HTML/CSS", "TeX", "MATLAB")) -->
+<!-- ``` -->
+
+# Awards
+
+```{r}
+readxl::read_xlsx(data_path, "awards") %>%
+  detailed_entries(what = Title, when = Year, with = Source, why = Description)
+```
+
+
+# Publications
+
+```{r publications}
+bibliography_entries("C:/dev/cv/publications.bib", "Publications")
+```
