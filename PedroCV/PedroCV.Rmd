@@ -1,11 +1,11 @@
 ---
-name: Marie
-surname: Curie
-position: "Ph.D. Candidate, Pardee RAND Graduate School"
-address: "Asdas   "
+name: Pedro
+surname: Lima
+position: "Ph.D Candidate, Pardee RAND Graduate School"
+address: "-"
 phone: +1 22 3333 4444
 www: pedronl.com
-email: "Marie.Curie@ens.fr"
+email: "pedrolima.n@gmail.com"
 twitter: mariecurie
 github: mariecurie
 linkedin: mariecurie
